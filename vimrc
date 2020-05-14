@@ -203,10 +203,10 @@ hi MatchParen ctermbg=red cterm=bold ctermfg=white
 
 " map the fzf to ctrl-r
 nnoremap <C-r> :Files<CR>
-nnoremap <leader>o :Tags<CR>
-nnoremap <leader>l :BLines<CR>
-nnoremap <C-Y> <C-R>
+noremap <C-Y> <C-R>
 
+map <C-K> :pyf ~/bin/clang-format.py<cr>
+imap <C-K> <c-o>:pyf ~/bin/clang-format.py<cr>
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
@@ -215,9 +215,6 @@ nnoremap <C-Left>  :vertical resize -5<CR>
 nnoremap <C-Right> :vertical resize +5<CR>
 nnoremap <C-Up>    :resize +5<CR>
 nnoremap <C-Down>  :resize -5<CR>
-
-map <C-K> :pyf ~/bin/clang-format.py<cr>
-imap <C-K> <c-o>:pyf ~/bin/clang-format.py<cr>
 
 " in interactive mode hitting ;; quickly produces an underscore
 inoremap ;; _
@@ -260,6 +257,10 @@ inoremap <C-b> <C-o>^
 "------------------------------------------
 " plugin-specific settings
 "------------------------------------------
+
+" let g:python3_host_prog = 'python3'
+" let g:python_host_prog = 'python'
+"
 
 let g:UltiSnipsExpandTrigger="<leader>e"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -329,6 +330,9 @@ nnoremap <leader>f ::YcmCompleter FixIt<CR>
 " refactor the name under the cursor
 nnoremap <leader>r  ::YcmCompleter RefactorRename<space>
 
+nnoremap <leader>o :Tags<CR>
+nnoremap <leader>l :BLines<CR>
+
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
@@ -374,3 +378,4 @@ endif
 " ---- Altr settings -----
 "call altr#define('%/src/%.cpp', '%/include/%.h')
 "nmap <F2> <Plug>(altr-forward)
+
