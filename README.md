@@ -8,7 +8,7 @@ The aim is to have a "nice" vim experience that is portable from desktop/laptop 
 cd ~
 mv .vim .vim_back
 mv .vimrc .vimrc_back
-git clone https://github.com/finkandreas/vimrc.git .vim
+git clone https://github.com/dganellari/vimrc.git .vim
 ln -s .vim/vimrc .vimrc
 # neovim support
 mkdir -p .config/nvim && ln -s ~/.vim/init.vim .config/nvim/init.vim
