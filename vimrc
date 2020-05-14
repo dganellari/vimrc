@@ -15,7 +15,7 @@ if 0 | endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
     " luna colorscheme
-    Plug 'bcumming/vim-luna'
+    Plug 'flazz/vim-colorschemes'
     " sensible defaults
     Plug 'tpope/vim-sensible'
     " airline status bar
@@ -34,6 +34,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     " repeat commands from plugins (i.e. when you press .)
     Plug 'tpope/vim-repeat'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'preservim/nerdcommenter'
+    Plug 'preservim/nerdtree'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
 
     " provides fuzzy completer and clang based cleverness
     " NOTE:
@@ -156,13 +163,14 @@ set hlsearch
 "------------------------------------------
 " color scheme settings
 "------------------------------------------
-set background=dark
-if has("gui_running")
-    colorscheme luna
-else
-    colorscheme luna-term
-    set t_Co=256
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
+set background=dark
+colorscheme molokai
+
 
 " hilight tabs
 set list
@@ -193,6 +201,24 @@ hi MatchParen ctermbg=red cterm=bold ctermfg=white
 " key bindings
 "------------------------------------------
 
+" map the fzf to ctrl-r
+nnoremap <C-r> :Files<CR>
+nnoremap <leader>o :Tags<CR>
+nnoremap <leader>l :BLines<CR>
+nnoremap <C-Y> <C-R>
+
+
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+
+nnoremap <C-Left>  :vertical resize -5<CR>
+nnoremap <C-Right> :vertical resize +5<CR>
+nnoremap <C-Up>    :resize +5<CR>
+nnoremap <C-Down>  :resize -5<CR>
+
+map <C-K> :pyf ~/bin/clang-format.py<cr>
+imap <C-K> <c-o>:pyf ~/bin/clang-format.py<cr>
+
 " in interactive mode hitting ;; quickly produces an underscore
 inoremap ;; _
 
@@ -200,7 +226,7 @@ inoremap ;; _
 let mapleader = "\<Space>"
 
 " hit leader then "e" to reload files that have changed outside the editor
-nnoremap <leader>e :edit<CR>
+nnoremap <leader>rr :edit<CR>
 
 " hit leader then "n" to toggle between absolute/relative/no line numbers
 " noremap <silent> <Leader>n :if &number<bar>set nonumber<bar>set rnu<bar>elseif &rnu<bar>set nornu<bar>else<bar>set number<bar>endif<cr>
@@ -219,16 +245,6 @@ nnoremap <left>  :tabprev<CR>
 " make up and down keys move tabs left and right
 nnoremap <up>    :tabm -1<CR>
 nnoremap <down>  :tabm +1<CR>
-" use leader with "lhkj" movements to switch window focus
-nnoremap <leader>l <C-w>l
-nnoremap <leader>h <C-w>h
-nnoremap <leader>k <C-w>k
-nnoremap <leader>j <C-w>j
-" use leader with up-down-left-right to resize the current window
-nnoremap <leader><right> :vertical resize +5<CR>
-nnoremap <leader><left>  :vertical resize -5<CR>
-nnoremap <leader><up>    :resize +5<CR>
-nnoremap <leader><down>  :resize -5<CR>
 
 " Hit Esc twice to save all file
 map <Esc><Esc> :wall<CR>
@@ -245,6 +261,43 @@ inoremap <C-b> <C-o>^
 " plugin-specific settings
 "------------------------------------------
 
+let g:UltiSnipsExpandTrigger="<leader>e"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_cpp = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeMapOpenVSplit = '<c-v>'
+let g:NERDTreeMapOpenInTab= '<c-t>'
+"
+
+set rtp+=~/.fzf
 
 "
 " --- GitGutter ---
@@ -270,7 +323,7 @@ nnoremap <leader>d  ::YcmCompleter GoTo<CR>
 " print type of symbol under the cursor
 nnoremap <leader>t  ::YcmCompleter GetType<CR>
 " Go to include file on current line
-nnoremap <leader>o  ::YcmCompleter GoToInclude<CR>
+nnoremap <leader>i  ::YcmCompleter GoToInclude<CR>
 " Apply YCM FixIt
 nnoremap <leader>f ::YcmCompleter FixIt<CR>
 " refactor the name under the cursor
