@@ -260,6 +260,10 @@ inoremap <C-b> <C-o>^
 "------------------------------------------
 " plugin-specific settings
 "------------------------------------------
+"
+" fzflayout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~23%' }
 
 " let g:python3_host_prog = 'python3'
 " let g:python_host_prog = 'python'
