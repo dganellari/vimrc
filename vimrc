@@ -39,7 +39,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/nerdtree'
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'junegunn/fzf'
+    " Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
     " provides fuzzy completer and clang based cleverness
@@ -170,6 +171,8 @@ if exists('+termguicolors')
 endif
 set background=dark
 colorscheme molokai
+" colorscheme Tomorrow-Night
+" colorscheme codedark
 
 
 " hilight tabs
@@ -298,7 +301,7 @@ let g:NERDTreeMapOpenVSplit = '<c-v>'
 let g:NERDTreeMapOpenInTab= '<c-t>'
 "
 
-set rtp+=~/.fzf
+" set rtp+=~/.fzf
 
 "
 " --- GitGutter ---
@@ -332,6 +335,17 @@ nnoremap <leader>r  ::YcmCompleter RefactorRename<space>
 
 nnoremap <leader>o :Tags<CR>
 nnoremap <leader>l :BLines<CR>
+nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>h :History:<CR>
+nnoremap <leader>H :History<CR>
+nnoremap <leader>/ :Ag --cpp<Space>
+nnoremap <leader>c :Colors<CR>
+nnoremap <leader>C :Commands<CR>
+nnoremap <leader>m :Maps<CR>
+nnoremap <leader>s :Filetypes<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
