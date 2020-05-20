@@ -205,8 +205,8 @@ hi MatchParen ctermbg=red cterm=bold ctermfg=white
 "------------------------------------------
 
 " map the fzf to ctrl-r
-nnoremap <C-r> :Files<CR>
-noremap <C-Y> <C-R>
+" nnoremap <C-r> :Files<CR>
+" noremap <C-Y> <C-R>
 
 map <C-K> :pyf ~/bin/clang-format.py<cr>
 imap <C-K> <c-o>:pyf ~/bin/clang-format.py<cr>
@@ -333,13 +333,14 @@ nnoremap <leader>t  ::YcmCompleter GetType<CR>
 " Go to include file on current line
 nnoremap <leader>i  ::YcmCompleter GoToInclude<CR>
 " Apply YCM FixIt
-nnoremap <leader>f ::YcmCompleter FixIt<CR>
+nnoremap <leader>ft ::YcmCompleter FixIt<CR>
 " refactor the name under the cursor
 nnoremap <leader>r  ::YcmCompleter RefactorRename<space>
 
 nnoremap <leader>o :Tags<CR>
 nnoremap <leader>l :BLines<CR>
 nnoremap <leader>g :GFiles<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>h :History:<CR>
 nnoremap <leader>H :History<CR>
@@ -348,8 +349,8 @@ nnoremap <leader>c :Colors<CR>
 nnoremap <leader>C :Commands<CR>
 nnoremap <leader>m :Maps<CR>
 nnoremap <leader>s :Filetypes<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qa<CR>
+nnoremap <leader>q :q!<CR>
+nnoremap <leader>qq :qa!<CR>
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
