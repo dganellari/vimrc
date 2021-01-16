@@ -22,12 +22,14 @@ For neovim you need the neovim python module installed, otherwise YouCompleteMe 
 Either install it with your package manager or create a virtual environment
 ```
 python3 -m venv $HOME/python_venv
-$HOME/python_venv/bin/activate
+source $HOME/python_venv/bin/activate
 pip install neovim
 ```
 Also make sure, that you add `$HOME/python_venv/bin/activate` to your .bashrc (or equivalent)
 
-For more details regarding fzf installation please have a look at the following link: https://github.com/junegunn/fzf/blob/master/README-VIM.md.
+For more information on fzf installation: https://github.com/junegunn/fzf.
+
+For more info on clang-format vim integration: https://clang.llvm.org/docs/ClangFormat.html#vim-integration.
 
 
 For vim within tmux you will need the following plugin: https://github.com/christoomey/vim-tmux-navigator.

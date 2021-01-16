@@ -265,8 +265,8 @@ inoremap <C-b> <C-o>^
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~23%' }
 
-" let g:python3_host_prog = 'python3'
-" let g:python_host_prog = 'python'
+let g:python3_host_prog = '/users/gandanie/python_venv/bin/python3'
+let g:python_host_prog = '/users/gandanie/python_venv/bin/python3'
 "
 
 let g:UltiSnipsExpandTrigger="<leader>e"
@@ -344,7 +344,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>h :History:<CR>
 nnoremap <leader>H :History<CR>
-nnoremap <leader>/ :Ag --cpp<Space>
+nnoremap <leader>/ :Ack --cpp<Space>
 nnoremap <leader>c :Colors<CR>
 nnoremap <leader>C :Commands<CR>
 nnoremap <leader>m :Maps<CR>
